@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Travel.Models.ApplyForTrip>
+
+@{
+    ViewBag.Title = "All My Trip";
+    Layout = "~/Views/Shared/_PublicAreaLayout.cshtml";
+}
+
+<div class="container">
+
+    <h2>@ViewBag.Title</h2>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonNumber)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PersonNumber)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+
+</div>

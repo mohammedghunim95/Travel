@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Travel.Models.Countries>
+@{
+    ViewBag.Title = "AllCountries";
+    Layout = "~/Views/Shared/_PublicAreaLayout.cshtml";
+}
+
+<div id="fh5co-destination">
+    <div class="tour-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <ul id="fh5co-destination-list" class="animate-box">
+                    @foreach (var x in Model)
+                    {
+                        <li class="one-forth text-center" style="background-image: url(../images/@x.Image); ">
+                            <a href="~/Regions/List/@x.CountryId">
+                                <div class="case-studies-summary">
+                                    <h2>@x.Name</h2>
+                                </div>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

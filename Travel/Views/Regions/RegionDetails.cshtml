@@ -1,0 +1,136 @@
+﻿@model Travel.Models.Regions
+
+@{
+    ViewBag.Title = "RegionDetails";
+    Layout = "~/Views/Shared/_PublicAreaLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            
+            <img class="img-responsive img-thumbnail" src="~/images/@Model.Image" alt="Alternate Text" />
+        </div>
+        <div class="col-md-6" style="padding:50px;">
+            <div class="card">
+                <div class="card-body">
+                    <h4><b>Country Name:</b> @Model.Countries.Name</h4>
+
+                    <h4><b>Trip Type:</b>  @Model.Countries.TripType</h4>
+                    <h4><b>Region Name:</b> @Model.Name</h4>
+                    <h4><b>Price:</b>  @Model.Price</h4>
+                    <h4><b>Mean Of Transportation:</b>  @Model.MeanOfTransportation</h4>
+
+                    <h4><a href="~/files/@Model.TouristProgram" download><b>Tourist Program:</b>  Download</a></h4>
+                    @using (Html.BeginForm())
+                    {
+                    <center>
+                        @Html.ActionLink("Apply Trip", "ApplyTrip", new { id = Model.RegionId }, new { @class = "btn btn-primary" })
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Things to do
+                        </button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
+                            Corona
+                        </button>
+                        @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalVideo">
+            Watch Me
+        </button>*@
+                    </center>
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Things to do</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @Html.Raw(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => modelItem.ThingsToDo).ToString()))
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Corona Status</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @Html.Raw(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => modelItem.CoronaStatus).ToString()))
+               <a href="#" id="read">Read More</a>
+                
+               <div id="CoronaDescription">
+                   @Html.Raw(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => modelItem.CoronaDescription).ToString()))
+               </div>
+
+            </div>
+            <div class="modal-footer">
+                <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="modal fade" id="exampleModalVideo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Watch Me</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <iframe width="420" height="315"
+                        src="@Model.Video">
+                </iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+
+@section scripts{
+<script>
+    $(document).ready(function () {
+        $("#CoronaDescription").hide();
+
+        $("#read").click(function () {
+            $("#CoronaDescription").show();
+
+        });
+
+        
+        $("#close").click(function () {
+            $("#CoronaDescription").hide();
+
+        });
+    })
+</script>
+    }

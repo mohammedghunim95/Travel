@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewBag.Title = "Confirm";
+    Layout = "~/Views/Shared/_PublicAreaLayout.cshtml";
+}
+
+<style>
+    body {
+        margin-top: 20px;
+    }
+
+    .panel-title {
+        display: inline;
+        font-weight: bold;
+    }
+
+    .checkbox.pull-right {
+        margin: 0;
+    }
+
+    .pl-ziro {
+        padding-left: 0px;
+    }
+</style>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Payment Details
+                    </h3>
+
+                </div>
+                <div class="panel-body">
+                    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+                        <div class="form-group">
+                            <label for="cardNumber">
+                                CARD NUMBER
+                            </label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number"
+                                       required autofocus />
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7">
+                                <label for="expityMonth">
+                                    EXPIRY DATE
+                                </label>
+                                <div class="form-group">
+
+                                    <div class="col-xs-6 col-lg-6 pl-ziro">
+                                        <input type="text" class="form-control" id="expityMonth" placeholder="MM" required />
+                                    </div>
+                                    <div class="col-xs-6 col-lg-6 pl-ziro">
+                                        <input type="text" class="form-control" id="expityYear" placeholder="YY" required />
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group">
+                                    <label for="cvCode">
+                                        CV CODE
+                                    </label>
+                                    <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Identify your business so that you can collect the payments. -->
+                        <input type="hidden" name="business" value="b-khaled@outlook.com">
+
+                        <!-- Specify a Buy Now button. -->
+                        <input type="hidden" name="cmd" value="_xclick">
+
+                        <!-- Specify details about the item that buyers will purchase. -->
+                        <input type="hidden" name="item_name" value="Book A Trip">
+                        <input type="hidden" name="amount" value="500">
+                        <input type="hidden" name="currency_code" value="JOD">
+
+                        <!-- Display the payment button. -->
+                        <input type="image" name="submit" border="0"
+                        <input type="image" name="submit" border="0"
+                               src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_buynow_107x26.png"
+                               alt="Buy Now">
+                    </form>
+                </div>
+            </div>
+            <br />
+           
+        </div>
+    </div>
+</div>
+

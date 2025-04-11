@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Travel.Models.Regions>
+@{
+    ViewBag.Title = "Companies";
+    Layout = "~/Views/Shared/_PublicAreaLayout.cshtml";
+}
+
+<style>
+    #side_menu {
+        list-style-type: none;
+        width: 200px;
+        background-color: #f4511e;
+        padding: 0;
+    }
+
+        #side_menu li {
+            text-align: center;
+            border-bottom: 1px solid #fff;
+        }
+
+            #side_menu li a {
+                display: block;
+                color: #fff;
+                text-decoration: none;
+                padding: 4px 16px;
+            } 
+</style>
+
+<br /><br /><br /><br />
+<div class="row">
+
+    <div class="col-sm-2">
+
+        <ul id="side_menu">
+
+            @{
+
+                var data = ViewData["cats"] as IEnumerable<Travel.Models.Regions>;
+                var cats = (from d in data select d.CompanyName).Distinct();
+                foreach (var c in cats)
+                {
+                    <li>@Html.ActionLink(c, "Details", "Home", new { category = c }, null)</li>
+                }
+            }
+
+        </ul>
+
+    </div>
+
+
+    <div class="col-md-10">
+        @if (Model != null)
+        {
+            <div class="row">
+
+                @foreach (var m in Model)
+                {
+                    <div class="col-md-2">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="~/images/@m.Image" alt="Card image cap" style="width:100%;height:150px;">
+                            <div class="card-body">
+                                <h3 class="card-title">@m.Name</h3>
+                                <a href="~/Regions/RegionDetails/@m.RegionId" class="btn btn-primary">Show Details</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        }
+    </div>
+
+
+
+
+</div>
+
+
+

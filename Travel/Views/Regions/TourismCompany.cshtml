@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Travel.Models.ApplyForTrip>
+
+@{
+    ViewBag.Title = "TourismCompany";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>TourismCompany</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PersonNumber)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.PricePersons)
+        </th>*@
+        <th>
+            Region Name
+        </th>
+        <th>
+            User Name
+        </th>
+        <th>
+            Phone Number
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PersonNumber)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.PricePersons)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Regions.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user.PhoneNumber)
+        </td>
+    </tr>
+}
+
+</table>

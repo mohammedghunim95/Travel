@@ -1,0 +1,56 @@
+﻿@model Travel.Models.offers
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_PublicAreaLayout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive img-thumbnail" src="~/images/@Model.Image" alt="Alternate Text" />
+        </div>
+        <div class="col-md-6" style="padding:50px;">
+            <div class="card">
+                <div class="card-body">
+                    <h4><b>Country Name:</b> @Model.Countries.Name</h4>
+
+                    <h4><b>Trip Type:</b>  @Model.Countries.TripType</h4>
+                    <h4><b>Region Name:</b> @Model.Name</h4>
+                    <h4><b>Price:</b>  @Model.Price</h4>
+                    <h4><b>Mean Of Transportation:</b>  @Model.MeanOfTransportation</h4>
+
+                    <h4><a href="~/files/@Model.TouristProgram" download><b>Tourist Program:</b>  Download</a></h4>
+                    @using (Html.BeginForm())
+                    {
+                    <center>
+                        @Html.ActionLink("Apply Trip", "ApplyTripoffers", new { id = Model.OfferId }, new { @class = "btn btn-primary" })
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                                Things to do
+                                            </button>
+                                        </center>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Things to do</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @Html.Raw(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => modelItem.ThingsToDo).ToString()))
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

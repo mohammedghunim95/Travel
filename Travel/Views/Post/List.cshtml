@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Travel.Models.Post>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_PublicAreaLayout.cshtml";
+}
+
+
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1" id="logout">
+            <div class="comment-tabs">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active"><a href="#comments-logout" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Comments</h4></a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="comments-logout">
+                        <ul class="media-list">
+                            @foreach (var item in Model)
+                            {
+                                <li class="media">
+                                    <a class="pull-left" href="#">
+                                        <img style="    height:100px;width: 100px;border-radius:0" class="media-object img-circle" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/User_icon-cp.svg/1200px-User_icon-cp.svg.png" alt="profile">
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="well well-lg">
+                                            <h4 style="float:left" class="media-heading text-uppercase reviews">@item.UserName </h4>
+                                            <ul style="float:right" class="media-date text-uppercase reviews list-inline">
+                                                <li class="dd">@item.DateTime</li>
+                                            </ul>
+                                            <br /><br />
+                                                  <p style="float:left" class="media-comment">
+                                                      @Html.Raw(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.Message).ToString()))
+                                                  </p>
+                                        </div>
+                                    </div>
+
+                                </li>
+                            }
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <a href="~/Post/CreatePost">Add Post</a>
+    </div>
+
+

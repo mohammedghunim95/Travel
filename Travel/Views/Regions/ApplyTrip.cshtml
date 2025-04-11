@@ -1,0 +1,67 @@
+﻿@model Travel.Models.ApplyForTrip
+
+@{
+    ViewBag.Title = "ApplyTrip";
+    Layout = "~/Views/Shared/_PublicAreaLayout.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="container">
+    <h4>
+        @ViewBag.message
+    </h4>
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    @*@Html.EditorFor(model => model.PersonNumber, new { htmlAttributes = new { @class = "form-control" } })*@
+
+                    <select name="PersonNumber" class="form-control">
+                        <option value="One">One</option>
+                        <option value="Two">Two</option>
+                        <option value="Three">Three</option>
+                        <option value="Four">Four</option>
+                    </select>
+
+
+                    @Html.ValidationMessageFor(model => model.PersonNumber, "", new { @class = "text-danger", @placeholder = "Enter Name" })
+                </div>
+
+                @*<div class="col-md-6">
+                <input class="form-control" name="pricepeoble" type="text" disabled />
+            </div>*@
+            </div>
+            <div class="col-md-6">
+                <label>   @Html.CheckBox("Hiring") Hiring Tour Guide</label>
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Book A Trip" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+
+</div>
+}
+
+@*@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("select").change(function () {
+                if ($(this).val() == "one") {
+                   
+                }
+            });
+        });
+    </script>
+    }*@
